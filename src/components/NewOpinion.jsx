@@ -1,5 +1,6 @@
 import { useActionState, use } from "react";
 import { OpinionsContext } from "../store/opinions-context";
+import Submit from "./Submit";
 export function NewOpinion() {
   const { addOpinion } = use(OpinionsContext);
   async function shareOpinionAction(prevFormState, formData) {
@@ -62,19 +63,14 @@ export function NewOpinion() {
             defaultValue={formState.enteredValues?.opinion}
           ></textarea>
         </p>
-        <div>
-          {formState.errors && (
-            <ul className="errors">
-              {formState.errors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <p className="actions">
-          <button type="submit">Submit</button>
-        </p>
+        {formState.errors && (
+          <ul className="errors">
+            {formState.errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
+        <Submit />
       </form>
     </div>
   );
