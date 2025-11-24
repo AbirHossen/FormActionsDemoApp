@@ -12,7 +12,7 @@ export function OpinionsContextProvider({ children }) {
 
   useEffect(() => {
     async function loadOpinions() {
-      const response = await fetch("http://localhost:5173/opinions");
+      const response = await fetch("http://localhost:3000/opinions");
       const opinions = await response.json();
       setOpinions(opinions);
     }
@@ -21,7 +21,7 @@ export function OpinionsContextProvider({ children }) {
   }, []);
 
   async function addOpinion(enteredOpinionData) {
-    const response = await fetch("http://localhost:5173/opinions", {
+    const response = await fetch("http://localhost:3000/opinions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
